@@ -7,5 +7,4 @@ import { MatToolbarModule } from '@angular/material/toolbar';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'app';
 }
