@@ -1,0 +1,20 @@
+<h1 mat-dialog-title>Please choose account for authorization:</h1>
+<!--<div mat-dialog-content id="uLogin" data-ulogin="display=panel;theme=flat;fields=email,first_name,last_name;providers=google,facebook,instagram;hidden=yandex,mailru,vkontakte,twitter,livejournal,odnoklassniki;redirect_uri=http%3A%2F%2Flocalhost%3A4200%2Flogin;mobilebuttons=0;"></div>-->
+
+<h1 *ngIf="!name">
+  Hallo
+</h1>
+<h1 *ngIf="name">
+  Hallo, {{name}}
+</h1>
+
+<button class="btn btn-default" (click)="login()">
+  Login
+</button>
+<button class="btn btn-default" (click)="logoff()">
+  Logout
+</button>
+
+<div>
+  Username/Passwort zum Testen: max/geheim
+</div>

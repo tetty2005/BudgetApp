@@ -1,0 +1,35 @@
+mat-card {
+  margin-bottom: 5px;
+}
+
+mat-card-content {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+  margin-right: 24px;
+}
+
+mat-card-title {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+mat-card-subtitle {
+  font-size: 14px;
+}
+
+.count {
+  text-align: right;
+  line-height: 56px;
+  font-size: 16px;
+  letter-spacing: 2px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+mat-progress-bar {
+  margin-left: 64px;
+}
