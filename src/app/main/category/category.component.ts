@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { MatIconRegistry } from '@angular/material';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-category',
@@ -7,7 +9,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CategoryComponent implements OnInit {
 
-  constructor() { }
+  constructor (iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+    iconRegistry.addSvgIcon(
+      'more-vert',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/more-vert.svg'));
+
+    iconRegistry.addSvgIcon(
+      'more-horiz',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/more-horiz.svg'));
+
+    iconRegistry.addSvgIcon(
+      'restaurant',
+      sanitizer.bypassSecurityTrustResourceUrl('assets/img/restaurant.svg'));
+  }
 
   ngOnInit() {
   }

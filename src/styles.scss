@@ -6,6 +6,11 @@ body {
   margin: 0 auto;
 }
 
+.row {
+  display: flex !important;
+  flex-wrap: wrap;
+}
+
 .col-auto {
   flex: 0 0 auto;
   width: auto;
@@ -16,4 +21,12 @@ body {
   flex-basis: 0;
   flex-grow: 1;
   max-width: 100%;
+}
+
+.right {
+  text-align: right;
+}
+
+.bg-red {
+  background: #EA6777;
 }

@@ -9,6 +9,11 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatDialogModule } from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
+import { MatMenuModule } from '@angular/material/menu';
+import { DomSanitizer } from '@angular/platform-browser';
+import { MatIconRegistry } from '@angular/material';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { LoginDialogComponent } from './login-dialog/login-dialog.component';
@@ -16,11 +21,14 @@ import { MainComponent } from './main/main.component';
 import { LoginComponent } from './login/login.component';
 import { CategoryComponent } from './main/category/category.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { EditCategoryComponent } from './main/category/edit-category/edit-category.component';
+import { BudgetComponent } from './main/budget/budget.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: 'main', component: MainComponent }
-  // { path: '',   redirectTo: '/heroes', pathMatch: 'full' }
+  { path: 'main', component: MainComponent },
+  { path: 'category/:id', component: EditCategoryComponent }
+  { path: '',   redirectTo: '/main', pathMatch: 'full' }
 ];
 
 @NgModule({
@@ -29,7 +37,9 @@ const appRoutes: Routes = [
     LoginDialogComponent,
     MainComponent,
     LoginComponent,
-    CategoryComponent
+    CategoryComponent,
+    EditCategoryComponent,
+    BudgetComponent
   ],
   imports: [
     HttpModule,
@@ -42,7 +52,10 @@ const appRoutes: Routes = [
     MatCardModule,
     MatButtonModule,
     MatDialogModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatInputModule,
+    MatMenuModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent],

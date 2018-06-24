@@ -1,35 +1,55 @@
 mat-card {
   margin-bottom: 5px;
+  border-radius: 10px;
+  padding: 20px;
 }
 
-mat-card-content {
-  display: flex;
-  flex-wrap: wrap;
-}
-
-.image {
-  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
-  background-size: cover;
-  margin-right: 24px;
-}
-
-mat-card-title {
+.title-section {
   font-size: 20px;
-  margin-bottom: 5px;
+
+  > * {
+    vertical-align: top;
+  }
+
+  .title-icon {
+    margin-right: 20px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #525C65;
+    height: 35px;
+    width: 35px;
+    padding: 8px;
+  }
+
+  .mat-icon-button {
+    color: grey;
+    margin-top: -9px;
+  }
 }
 
-mat-card-subtitle {
-  font-size: 14px;
+.action-section {
+  margin-top: -10px;
+
+  .mat-form-field {
+    width: 60px;
+    margin-right: 20px;
+  }
+
+  .mat-mini-fab {
+    background-color: #7394B7;
+  }
 }
 
-.count {
-  text-align: right;
-  line-height: 56px;
-  font-size: 16px;
-  letter-spacing: 2px;
-  font-family: 'Montserrat', sans-serif;
-}
+.progress-section {
+  margin-left: 71px;
+  color: rgba(0,0,0,.54);
+  font-family: 'Montserrat';
 
-mat-progress-bar {
-  margin-left: 64px;
+  .goal-total {
+    color: #F24B21;
+  }
+
+  mat-progress-bar {
+    margin-top: 5px;
+  }
 }

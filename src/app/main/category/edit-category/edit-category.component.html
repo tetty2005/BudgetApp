@@ -1,0 +1,11 @@
+<mat-card>
+  <mat-card-title [ngSwitch]="category">
+    <ng-container *ngSwitchCase="null">Создание категории</ng-container>
+  </mat-card-title>
+  <mat-card-content>
+    <mat-form-field>
+      <input matInput placeholder="Название категории">
+    </mat-form-field>
+    <mat-icon class="title-icon" svgIcon="restaurant"></mat-icon>
+  </mat-card-content>
+</mat-card>
