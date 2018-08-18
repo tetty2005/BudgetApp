@@ -12,13 +12,15 @@ mat-card {
   }
 
   .title-icon {
+    text-align: center;
     margin-right: 20px;
     border-radius: 50%;
     color: #fff;
     background-color: #525C65;
-    height: 35px;
-    width: 35px;
-    padding: 8px;
+    font-size: 29px;
+    height: 51px;
+    width: 51px;
+    line-height: 51px !important;
   }
 
   .mat-icon-button {
@@ -51,5 +53,57 @@ mat-card {
 
   mat-progress-bar {
     margin-top: 5px;
+    height: 8px;
+    border-radius: 9px;
   }
+}
+
+.mat-progress-bar-buffer {
+  background-color: #F8F1F1;
+}
+
+.mat-progress-bar-fill::after {
+  background-color: #beb840;
+}
+
+mat-progress-bar::-webkit-progress-bar {
+  background: #F8F1F1;
+  border-radius: 9px;
+  border: 1px solid white;
+}
+
+progress::-webkit-progress-value {
+  background: #beb840;
+  border-radius: 9px;
+  border: 1px solid white;
+}
+
+progress.styled1::-webkit-progress-value {
+  background: #beb840;
+  border-radius: 9px;
+  border: 1px solid white;
+}
+
+progress.styled2::-webkit-progress-value {
+  background: #f2cb66;
+  border-radius: 9px;
+  border: 1px solid white;
+}
+
+progress.styled3::-webkit-progress-value {
+  background: #eda23d;
+  border-radius: 9px;
+  border: 1px solid white;
+}
+
+progress.styled4::-webkit-progress-value {
+  background: #db5e30;
+  border-radius: 9px;
+  border: 1px solid white;
+}
+
+progress.styled5::-webkit-progress-value {
+  background: #a82221;
+  border-radius: 9px;
+  border: 1px solid white;
 }

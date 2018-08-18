@@ -1,0 +1,26 @@
+mat-form-field {
+  width: 100%;
+}
+
+.title-picture {
+  text-align: center;
+  margin-top: 18px;
+  color: rgba(0,0,0,.54);
+}
+
+.title-icon {
+  border-radius: 50%;
+  color: #fff;
+  background-color: #525C65;
+  display: block;
+  margin: 20px auto;
+  font-size: 29px;
+  height: 51px;
+  width: 51px;
+  line-height: 51px !important;
+}
+
+mat-card-actions {
+  text-align: right;
+  margin: 0 !important;
+}

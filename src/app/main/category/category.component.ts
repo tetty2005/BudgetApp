@@ -17,10 +17,6 @@ export class CategoryComponent implements OnInit {
     iconRegistry.addSvgIcon(
       'more-horiz',
       sanitizer.bypassSecurityTrustResourceUrl('assets/img/more-horiz.svg'));
-
-    iconRegistry.addSvgIcon(
-      'restaurant',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/img/restaurant.svg'));
   }
 
   ngOnInit() {

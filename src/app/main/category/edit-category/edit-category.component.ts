@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatIconRegistry } from '@angular/material';
-import { DomSanitizer } from '@angular/platform-browser';
+import { CategoryModel } from './CategoryModel';
 
 @Component({
   selector: 'app-edit-category',
@@ -8,17 +7,18 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./edit-category.component.scss']
 })
 export class EditCategoryComponent implements OnInit {
-  const category = null;
+  category:CategoryModel = {icon: 'dialpad'};
+  icons = ['dialpad', 'restaurant', 'voicemail', 'notifications_off'];
 
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor() {
 
-    iconRegistry.addSvgIcon(
-      'restaurant',
-      sanitizer.bypassSecurityTrustResourceUrl('assets/img/restaurant.svg'));
   }
 
   ngOnInit() {
     // const id = this.route.snapshot.paramMap.get('id');
   }
 
+  onSave() {
+    console.log('category saved', this.category);
+  }
 }
