@@ -1,0 +1,43 @@
+<mat-card>
+  <mat-card-content>
+
+    <div class="main-section row">
+      <div class="title-section col-auto">
+        <mat-icon class="title-icon">{{ category.icon }}</mat-icon>
+        <span>{{ category.name }}</span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onEdit()">
+            <mat-icon class="icon-add">create</mat-icon>
+            Изменить
+          </button>
+          <button mat-menu-item (click)="onDelete()">
+            <mat-icon class="icon-add">clear</mat-icon>
+            Убрать
+          </button>
+        </mat-menu>
+      </div>
+
+      <div class="action-section col right">
+        <mat-form-field>
+          <input matInput placeholder="Сумма">
+        </mat-form-field>
+        <button mat-mini-fab (click)="onShortSum()">{{ category.popularSumm }}</button>
+      </div>
+    </div>
+
+    <div class="progress-section row">
+      <div class="col-auto">
+        <strong>$430</strong> of
+        <strong class="goal-total">${{ category.monthBudget }}</strong>
+      </div>
+      <div class="col right">
+        <strong>$570</strong>
+      </div>
+      <mat-progress-bar mode="determinate" value="40"></mat-progress-bar>
+    </div>
+
+  </mat-card-content>
+</mat-card>

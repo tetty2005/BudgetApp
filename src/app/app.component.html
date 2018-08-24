@@ -6,4 +6,26 @@
   <!--</mat-toolbar-row>-->
 <!--</mat-toolbar>-->
 
-<router-outlet></router-outlet>
+<mat-card class="main">
+  <div class="content">
+    <router-outlet></router-outlet>
+  </div>
+  <mat-card-footer>
+    <hr>
+    <div class="row">
+      <button mat-icon-button routerLink="/categories" routerLinkActive="active" class="col">
+        <mat-icon svgIcon="list"></mat-icon>
+      </button>
+      <button mat-icon-button routerLink="/budget" routerLinkActive="active" class="col">
+        <mat-icon svgIcon="money-bag2"></mat-icon>
+      </button>
+      <button mat-icon-button routerLink="/statistics" routerLinkActive="active" class="col">
+        <mat-icon svgIcon="pie_chart"></mat-icon>
+      </button>
+      <button mat-icon-button routerLink="/dynamics" routerLinkActive="active" class="col">
+        <mat-icon svgIcon="bar_chart"></mat-icon>
+      </button>
+    </div>
+  </mat-card-footer>
+
+</mat-card>

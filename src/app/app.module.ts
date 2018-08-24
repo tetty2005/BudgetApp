@@ -15,38 +15,40 @@ import { MatMenuModule } from '@angular/material/menu';
 import { DomSanitizer } from '@angular/platform-browser';
 import { MatIconRegistry } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
-import { CategoryListComponent } from './main/category-list/category-list.component';
-import { StaticMonthComponent } from './main/static-month/static-month.component';
-import { StaticCategoryComponent } from './main/static-category/static-category.component';
+import { CategoryListComponent } from './category-list/category-list.component';
+import { DynamicMonthComponent } from './dynamic-month/dynamic-month.component';
+import { StaticCategoryComponent } from './static-category/static-category.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
-
 import { AppComponent } from './app.component';
-import { LoginDialogComponent } from './login-dialog/login-dialog.component';
-import { MainComponent } from './main/main.component';
+import { LoginDialogComponent } from './login/login-dialog/login-dialog.component';
 import { LoginComponent } from './login/login.component';
-import { CategoryComponent } from './main/category/category.component';
-import { EditCategoryComponent } from './main/category/edit-category/edit-category.component';
-import { BudgetComponent } from './main/budget/budget.component';
+import { CategoryComponent } from './category-list/category/category.component';
+import { EditCategoryComponent } from './category-list/category/edit-category/edit-category.component';
+import { BudgetComponent } from './budget/budget.component';
+import { CategoryBudgetComponent } from './budget/category-budget/category-budget.component';
 
 const appRoutes: Routes = [
-  { path: 'login', component: LoginComponent },
-  { path: 'main', component: MainComponent },
-  { path: 'category/:id', component: EditCategoryComponent },
-  { path: '',   redirectTo: '/main', pathMatch: 'full' }
+  // { path: 'login', component: LoginComponent },
+    { path: 'categories', component: CategoryListComponent },
+    { path: 'budget', component: BudgetComponent },
+    { path: 'statistics', component: StaticCategoryComponent },
+    { path: 'dynamics', component: DynamicMonthComponent },
+    { path: 'categories/:id', component: EditCategoryComponent },
+    { path: '',  redirectTo: '/categories', pathMatch: 'full' }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginDialogComponent,
-    MainComponent,
     LoginComponent,
     CategoryComponent,
     EditCategoryComponent,
     BudgetComponent,
     CategoryListComponent,
-    StaticMonthComponent,
-    StaticCategoryComponent
+    DynamicMonthComponent,
+    StaticCategoryComponent,
+    CategoryBudgetComponent
   ],
   imports: [
     HttpModule,

@@ -1,0 +1,42 @@
+<mat-card>
+  <mat-card-content>
+
+    <div class="main-section row">
+      <div class="title-section col-auto">
+        <mat-icon class="title-icon">{{ category.icon }}</mat-icon>
+        <span>{{ category.name }}</span>
+        <button mat-icon-button [matMenuTriggerFor]="menu">
+          <mat-icon>more_vert</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+          <button mat-menu-item (click)="onEdit()">
+            <mat-icon class="icon-add">create</mat-icon>
+            Изменить
+          </button>
+          <button mat-menu-item (click)="onDelete()">
+            <mat-icon class="icon-add">delete</mat-icon>
+            Удалить
+          </button>
+        </mat-menu>
+      </div>
+
+      <div class="spend-section col right">
+        <div class="row">
+          <div class="col">
+            <div class="spend-title">Бюджет на месяц</div>
+            <div class="spend-sum">{{ category.monthBudget }}</div>
+          </div>
+          <div class="col">
+            <div class="spend-title">Стандартная трата</div>
+            <div class="spend-sum">{{ category.popularSumm }}</div>
+          </div>
+        </div>
+        <!--<mat-form-field>-->
+          <!--<input matInput placeholder="Сумма">-->
+        <!--</mat-form-field>-->
+        <!--<button mat-mini-fab>50</button>-->
+      </div>
+    </div>
+
+  </mat-card-content>
+</mat-card>

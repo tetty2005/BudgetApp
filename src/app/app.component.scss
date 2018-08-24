@@ -1,0 +1,27 @@
+.main {
+  box-shadow: none !important;
+  background: #525C65;
+  width: 100%;
+
+  .content {
+    overflow: overlay;
+    height: calc(100% - 50px);
+  }
+
+  mat-icon {
+    color: white;
+  }
+
+  .mat-card-footer {
+    margin-bottom: 0px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .active {
+    mat-icon{
+      color: #FFB200;
+    }
+  }
+}

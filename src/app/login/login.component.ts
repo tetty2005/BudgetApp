@@ -3,7 +3,7 @@ import { JwksValidationHandler } from 'angular-oauth2-oidc';
 import { authConfig } from '../../auth.config';
 import { Component, OnInit } from '@angular/core';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { LoginDialogComponent } from '../login-dialog/login-dialog.component';
+import { LoginDialogComponent } from './login-dialog/login-dialog.component';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
 
 @Component({

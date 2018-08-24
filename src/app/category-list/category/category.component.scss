@@ -1,0 +1,66 @@
+mat-card {
+  margin-bottom: 5px;
+  border-radius: 10px;
+  padding: 20px;
+}
+
+.title-section {
+  font-size: 20px;
+
+  > * {
+    vertical-align: middle;
+  }
+
+  .title-icon {
+    text-align: center;
+    margin-right: 20px;
+    border-radius: 50%;
+    color: #fff;
+    background-color: #525C65;
+    font-size: 29px;
+    height: 51px;
+    width: 51px;
+    line-height: 51px !important;
+  }
+
+  .mat-icon-button {
+    color: grey;
+  }
+}
+
+.mat-menu-item {
+  line-height: 30px;
+  height: 30px;
+
+  .icon-add {
+    height: 22px;
+    width: 20px;
+    font-size: 20px;
+    margin-right: 5px;
+  }
+}
+
+.spend-section {
+  margin-top: -10px;
+  text-align: center;
+  margin-left: 70px;
+
+  .mat-form-field {
+    width: 60px;
+    margin-right: 20px;
+  }
+
+  .mat-mini-fab {
+    background-color: #7394B7;
+  }
+
+  .spend-title {
+    font-size: 10px;
+    color: #525C65;
+  }
+
+  .spend-sum {
+    font-size: 22px;
+    margin-top: 15px;
+  }
+}
