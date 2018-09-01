@@ -1,12 +1,9 @@
-import { OAuthService } from 'angular-oauth2-oidc';
-import { JwksValidationHandler } from 'angular-oauth2-oidc';
-import { authConfig } from '../auth.config';
 import { Component } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
-import { LoginDialogComponent } from './login/login-dialog/login-dialog.component';
 import { MatIconRegistry } from '@angular/material';
 import { DomSanitizer } from '@angular/platform-browser';
+import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
+import { FirebaseHelper } from './firebase-helper';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +11,10 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(iconRegistry: MatIconRegistry, sanitizer: DomSanitizer) {
+  constructor(iconRegistry: MatIconRegistry,
+              sanitizer: DomSanitizer,
+              private authService: AuthService,
+              private router: Router) {
     iconRegistry.addSvgIcon(
       'list',
       sanitizer.bypassSecurityTrustResourceUrl('assets/img/list.svg'));
@@ -37,5 +37,11 @@ export class AppComponent {
   }
 
   ngOnInit() {
+  }
+
+  onLogout() {
+    FirebaseHelper.signOut();
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 }

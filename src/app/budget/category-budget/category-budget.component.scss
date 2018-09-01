@@ -71,52 +71,28 @@ mat-card {
   }
 }
 
-.mat-progress-bar-buffer {
+::ng-deep .mat-progress-bar-buffer {
   background-color: #F8F1F1;
 }
 
-.mat-progress-bar-fill::after {
-  background-color: #beb840;
-}
+::ng-deep .mat-progress-bar-fill::after {
+  .styled1 & {
+    background-color: #beb840;
+  }
 
-mat-progress-bar::-webkit-progress-bar {
-  background: #F8F1F1;
-  border-radius: 9px;
-  border: 1px solid white;
-}
+  .styled2 & {
+    background-color: #f2cb66;
+  }
 
-progress::-webkit-progress-value {
-  background: #beb840;
-  border-radius: 9px;
-  border: 1px solid white;
-}
+  .styled3 & {
+    background-color: #eda23d;
+  }
 
-progress.styled1::-webkit-progress-value {
-  background: #beb840;
-  border-radius: 9px;
-  border: 1px solid white;
-}
+  .styled4 & {
+    background-color: #db5e30;
+  }
 
-progress.styled2::-webkit-progress-value {
-  background: #f2cb66;
-  border-radius: 9px;
-  border: 1px solid white;
-}
-
-progress.styled3::-webkit-progress-value {
-  background: #eda23d;
-  border-radius: 9px;
-  border: 1px solid white;
-}
-
-progress.styled4::-webkit-progress-value {
-  background: #db5e30;
-  border-radius: 9px;
-  border: 1px solid white;
-}
-
-progress.styled5::-webkit-progress-value {
-  background: #a82221;
-  border-radius: 9px;
-  border: 1px solid white;
+  .styled5 & {
+    background-color: #a82221;
+  }
 }

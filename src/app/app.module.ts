@@ -1,4 +1,3 @@
-import { OAuthModule } from 'angular-oauth2-oidc';
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpModule } from '@angular/http';
@@ -9,7 +8,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
-import { MatDialogModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
 import { DomSanitizer } from '@angular/platform-browser';
@@ -20,27 +18,27 @@ import { DynamicMonthComponent } from './dynamic-month/dynamic-month.component';
 import { StaticCategoryComponent } from './static-category/static-category.component';
 import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { AppComponent } from './app.component';
-import { LoginDialogComponent } from './login/login-dialog/login-dialog.component';
 import { LoginComponent } from './login/login.component';
 import { CategoryComponent } from './category-list/category/category.component';
 import { EditCategoryComponent } from './category-list/category/edit-category/edit-category.component';
 import { BudgetComponent } from './budget/budget.component';
 import { CategoryBudgetComponent } from './budget/category-budget/category-budget.component';
+import { FirebaseComponent } from './firebase/firebase.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const appRoutes: Routes = [
-  // { path: 'login', component: LoginComponent },
-    { path: 'categories', component: CategoryListComponent },
-    { path: 'budget', component: BudgetComponent },
-    { path: 'statistics', component: StaticCategoryComponent },
-    { path: 'dynamics', component: DynamicMonthComponent },
-    { path: 'categories/:id', component: EditCategoryComponent },
-    { path: '',  redirectTo: '/categories', pathMatch: 'full' }
+  { path: 'login', component: LoginComponent },
+  { path: '',  redirectTo: '/categories', pathMatch: 'full' },
+  { path: 'categories', canActivate: [AuthGuard], component: CategoryListComponent },
+  { path: 'budget', canActivate: [AuthGuard], component: BudgetComponent },
+  { path: 'statistics', canActivate: [AuthGuard], component: StaticCategoryComponent },
+  { path: 'dynamics', canActivate: [AuthGuard], component: DynamicMonthComponent },
+  { path: 'categories/:id', canActivate: [AuthGuard], component: EditCategoryComponent }
 ];
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginDialogComponent,
     LoginComponent,
     CategoryComponent,
     EditCategoryComponent,
@@ -48,12 +46,12 @@ const appRoutes: Routes = [
     CategoryListComponent,
     DynamicMonthComponent,
     StaticCategoryComponent,
-    CategoryBudgetComponent
+    CategoryBudgetComponent,
+    FirebaseComponent
   ],
   imports: [
     HttpModule,
     FormsModule,
-    OAuthModule.forRoot(),
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
     BrowserModule,
@@ -61,16 +59,13 @@ const appRoutes: Routes = [
     MatToolbarModule,
     MatCardModule,
     MatButtonModule,
-    MatDialogModule,
     MatProgressBarModule,
     MatInputModule,
     MatIconModule,
     MatMenuModule
   ],
   providers: [],
-  bootstrap: [AppComponent],
-  entryComponents: [LoginDialogComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
-
 }

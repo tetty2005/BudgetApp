@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CategoryModel } from '../../../CategoryModel';
-import { CategoryService } from '../../../category.service';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-edit-category',
@@ -15,6 +15,7 @@ export class EditCategoryComponent implements OnInit {
 
   constructor(private service: CategoryService) {
     this.category.icon = 'restaurant';
+
   }
 
   ngOnInit() {
@@ -22,6 +23,6 @@ export class EditCategoryComponent implements OnInit {
   }
 
   onSave() {
-    this.service.create(this.category).subscribe((data: CategoryModel[]) => this.categories = data);
+    this.service.create(this.category);
   }
 }

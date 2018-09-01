@@ -1,12 +1,7 @@
-<!--<mat-toolbar>-->
-  <!--<mat-toolbar-row>-->
-    <!--<button mat-raised-button color="primary" routerLink="/main" routerLinkActive="active">Open Main Page</button>-->
-    <!--&nbsp;-->
-    <!--<button mat-raised-button color="primary" routerLink="/login" routerLinkActive="active">Log in</button>-->
-  <!--</mat-toolbar-row>-->
-<!--</mat-toolbar>-->
-
 <mat-card class="main">
+  <button mat-icon-button class="logout" (click)="onLogout()">
+    <mat-icon>exit_to_app</mat-icon>
+  </button>
   <div class="content">
     <router-outlet></router-outlet>
   </div>

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { CategoryModel } from '../../CategoryModel';
-import { CategoryService } from '../../category.service';
+import { CategoryService } from '../../services/category.service';
 
 @Component({
   selector: 'app-category',
@@ -19,7 +19,7 @@ export class CategoryComponent implements OnInit {
 
   onDelete () {
     console.log('onDelete');
-    this.service.delete(this.category).subscribe((data: CategoryModel[]) => this.categories = data);
+    this.service.delete(this.category);
   }
 
   ngOnInit() {

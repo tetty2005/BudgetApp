@@ -4,6 +4,10 @@ mat-card {
   padding: 20px;
 }
 
+.main-section {
+  justify-content: space-between;
+}
+
 .title-section {
   font-size: 20px;
 
@@ -43,7 +47,7 @@ mat-card {
 .spend-section {
   margin-top: -10px;
   text-align: center;
-  margin-left: 70px;
+  width: 130px;
 
   .mat-form-field {
     width: 60px;

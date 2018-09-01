@@ -1,10 +1,6 @@
-import { OAuthService } from 'angular-oauth2-oidc';
-import { JwksValidationHandler } from 'angular-oauth2-oidc';
-import { authConfig } from '../../auth.config';
 import { Component, OnInit } from '@angular/core';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { LoginDialogComponent } from './login-dialog/login-dialog.component';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
+import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -12,28 +8,16 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material';
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-  constructor(private oauthService: OAuthService,
-              private dialog: MatDialog) {
-    this.configureWithNewConfigApi();
+
+  constructor (private authService: AuthService, private router: Router) {
   }
 
+  onSignedIn(user) {
+    let redirectUrl = this.authService.redirectUrl || '/';
+    console.log('onSignedIn', redirectUrl, user);
 
-  private configureWithNewConfigApi() {
-    this.oauthService.configure(authConfig);
-    this.oauthService.tokenValidationHandler = new JwksValidationHandler();
-    this.oauthService.loadDiscoveryDocumentAndTryLogin();
-  }
-
-  openDialog(): void {
-    let dialog = this.dialog.open(LoginDialogComponent);
-
-    dialog.afterClosed().subscribe(() => {
-      console.log('The dialog was closed');
-    });
-  }
-
-  openMain() {
-    console.log('main page is clicked');
+    this.authService.login(user);
+    this.router.navigate([redirectUrl]);
   }
 
   ngOnInit() {
