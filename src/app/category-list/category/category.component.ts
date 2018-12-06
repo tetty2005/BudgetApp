@@ -19,7 +19,7 @@ export class CategoryComponent implements OnInit {
 
   onDelete () {
     console.log('onDelete');
-    this.service.delete(this.category);
+    this.service.onDelete(this.category);
   }
 
   ngOnInit() {

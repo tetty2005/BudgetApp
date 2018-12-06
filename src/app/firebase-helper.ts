@@ -91,8 +91,8 @@ class FirebaseHelperClass {
     return this.app.auth().signOut();
   }
 
-  getDB() {
-    return this.app.firestore();
+  getApp() {
+    return this.app;
   }
 
 }
