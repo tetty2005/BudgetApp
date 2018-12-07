@@ -1,7 +1,7 @@
 <mat-card-content>
   <mat-card-title>Категории</mat-card-title>
   <mat-card-subtitle>Список всех категорий</mat-card-subtitle>
-  <app-category *ngFor="let category of categories" [category]="category"></app-category>
+  <app-category *ngFor="let category of categories" [category]="category" (delete)="onDelete($event)"></app-category>
   <button mat-fab routerLink="/categories/new" class="add-category" title="Создать категорию">
     <mat-icon>add</mat-icon>
   </button>

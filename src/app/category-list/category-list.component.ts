@@ -19,4 +19,9 @@ export class CategoryListComponent implements OnInit {
   getCategories() {
     this.service.getAll().subscribe((data: CategoryModel[]) => this.categories = data);
   }
+
+  onDelete(category: CategoryModel) {
+    let indexCategory = this.categories.indexOf(category);
+    this.categories.splice(indexCategory, 1);
+  }
 }

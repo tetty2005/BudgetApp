@@ -17,10 +17,8 @@ export class CategoryService {
     const categories: CategoryModel[] = [];
     this.db.collection('Categories').get().then((querySnapshot) => {
       querySnapshot.forEach((doc) => {
-        categories.push(doc.data());
-        console.log('querySnapshot', `${doc.id} => ${doc.data()}`);
+        categories.push({id: doc.id, ...doc.data()});
       });
-      console.log('getAll categories', categories);
     });
 
     return of(categories);
@@ -30,8 +28,7 @@ export class CategoryService {
     return this.db.collection('Categories').add(JSON.parse(JSON.stringify(category)));
   }
 
-  onDelete(category: CategoryModel):Observable<CategoryModel> {
-    let url = this.url + '/' + category.id;
-    return this.http.delete<CategoryModel>(url);
+  delete(category: CategoryModel):Observable<CategoryModel> {
+    return this.db.collection('Categories').doc(category.id).delete();
   }
 }
