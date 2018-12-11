@@ -7,4 +7,16 @@ export class CategoryModel {
   constructor ( ) {
 
   }
+
+  constructor (data) {
+    this.set(data);
+  }
+
+  set(data) {
+    this.id = data.id;
+    this.icon = data.icon;
+    this.name = data.name;
+    this.monthBudget = data.monthBudget;
+    this.popularSumm = data.popularSumm;
+  }
 }

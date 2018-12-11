@@ -15,12 +15,8 @@ export class CategoryComponent implements OnInit {
   constructor (private service: CategoryService) {
   }
 
-  onEdit () {
-    console.log('onEdit');
-  }
-
   onDelete () {
-    this.service.delete(this.category).then(() => this.delete.emit(this.category));
+    this.service.delete(this.category).subscribe(() => this.delete.emit(this.category));
   }
 
   ngOnInit() {
