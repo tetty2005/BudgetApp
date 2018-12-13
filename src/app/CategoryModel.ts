@@ -1,15 +1,12 @@
 export class CategoryModel {
-    public id: number;
-    public icon: string;
-    public name: string;
-    public monthBudget: number;
-    public popularSumm: number;
-  constructor ( ) {
+  public id: number;
+  public icon: string;
+  public name: string;
+  public monthBudget: number;
+  public popularSumm: number;
 
-  }
-
-  constructor (data) {
-    this.set(data);
+  constructor(data = null) {
+    if (data) this.set(data);
   }
 
   set(data) {
