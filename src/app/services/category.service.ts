@@ -1,54 +1,70 @@
-import { Injectable } from '@angular/core';
-import { Observable, of, from } from 'rxjs';
-import { CategoryModel } from '../CategoryModel';
-import { HttpClient } from '@angular/common/http';
-import { FirebaseHelper } from '../firebase-helper';
+import {Observable, of, from, forkJoin} from 'rxjs';
+import { CategoryModel } from '../Models/CategoryModel';
+import { FirebaseService } from './firebase.service';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class CategoryService {
-  private db = FirebaseHelper.getApp().firestore();
+export class CategoryService extends FirebaseService {
+  protected collectionUrl;
+  protected collectionRef;
 
-  constructor(private http: HttpClient) {}
+  getCollectionUrl () {
+    return this.collectionUrl;
+  }
+
+  getCollection () {
+    if (!this.collectionRef) {
+      this.collectionRef = this.getDb().collection(this.getCollectionUrl());
+    }
+
+    return this.collectionRef;
+  }
 
   getAll(): Observable<CategoryModel[]> {
-    const categories: CategoryModel[] = [];
+    return Observable.create((observer) => {
+      const categories: CategoryModel[] = [];
 
-    this.db.collection('Categories').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        categories.push({id: doc.id, ...doc.data()});
+      this.getCollection().get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          categories.push(new CategoryModel({id: doc.id, ...doc.data()}));
+        });
+        observer.next(categories);
       });
     });
-
-    return of(categories);
   }
 
   get(id: string): Observable<CategoryModel> {
     const category = new CategoryModel();
 
-    this.db.collection('Categories').doc(id).get().then((doc) => {
+    this.getCollection().doc(id).get().then((doc) => {
       category.set({id: doc.id, ...doc.data()});
     });
 
     return of(category);
   }
 
-  update(category: CategoryModel):Observable<CategoryModel> {
-    const data = {...category};
-    delete data.id;
-
-    const promise = this.db.collection('Categories').doc(category.id).set({...data});
+  update(category: CategoryModel): Observable<CategoryModel> {
+    const promise = this.getCollection().doc(category.id).set(category.get());
 
     return from(promise);
   }
 
-  create(category: CategoryModel):Observable<CategoryModel> {
-    return this.db.collection('Categories').add({...category});
+  create(category: CategoryModel): Observable<CategoryModel> {
+    const promise = this.getCollection().add({...category});
+
+    return from(promise);
   }
 
-  delete(category: CategoryModel):Observable<CategoryModel> {
-    const promise = this.db.collection('Categories').doc(category.id).delete();
+  createMany(categories: CategoryModel[]) {
+    const observables = [];
+
+    categories.forEach((category) => {
+      observables.push(this.create(category.get()));
+    });
+
+    return forkJoin(observables);
+  }
+
+  delete(category: CategoryModel): Observable<CategoryModel> {
+    const promise = this.getCollection().doc(category.id).delete();
 
     return from(promise);
   }

@@ -1,7 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CategoryModel } from '../../CategoryModel';
-import { CategoryService } from '../../services/category.service';
+import { CategoryModel } from '../../Models/CategoryModel';
 import { EventEmitter, Output } from '@angular/core';
+import {UserCategoryService} from '../../services/user-category.service';
 
 @Component({
   selector: 'app-category',
@@ -12,7 +12,7 @@ export class CategoryComponent implements OnInit {
   @Input() category: CategoryModel;
   @Output() delete = new EventEmitter();
 
-  constructor (private service: CategoryService) {
+  constructor (private service: UserCategoryService) {
   }
 
   onDelete () {

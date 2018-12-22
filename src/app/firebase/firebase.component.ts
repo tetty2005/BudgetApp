@@ -12,7 +12,6 @@ export class FirebaseComponent implements OnInit {
 
   constructor() {
     FirebaseHelper.init('#firebaseui-auth-container', (user) => {
-      console.log('FirebaseHelper.init', user);
       this.signedIn.emit(user);
     });
   }

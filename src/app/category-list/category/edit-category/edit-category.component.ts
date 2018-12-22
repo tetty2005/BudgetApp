@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryModel } from '../../../CategoryModel';
-import { CategoryService } from '../../../services/category.service';
+import { CategoryModel } from '../../../Models/CategoryModel';
 import { ActivatedRoute } from '@angular/router';
+import {UserCategoryService} from '../../../services/user-category.service';
 
 @Component({
   selector: 'app-edit-category',
@@ -16,7 +16,7 @@ export class EditCategoryComponent implements OnInit {
   'business_center', 'casino', 'fitness_center', 'free_breakfast', 'kitchen', 'spa', 'train', 'local_bar', 'fastfood', 'local_mall',
   'shopping_cart'];
 
-  constructor(private service: CategoryService, private route: ActivatedRoute) {}
+  constructor(private service: UserCategoryService, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.id = this.route.snapshot.params.id;

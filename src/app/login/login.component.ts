@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
+import { UserService } from '../services/user.service';
 import { Router } from '@angular/router';
+import { User } from '../Models/UserModel';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +11,23 @@ import { Router } from '@angular/router';
 })
 export class LoginComponent implements OnInit {
 
-  constructor (private authService: AuthService, private router: Router) {
+  constructor(private authService: AuthService,
+              private userService: UserService,
+              private router: Router) {
   }
 
-  onSignedIn(user) {
-    let redirectUrl = this.authService.redirectUrl || '/';
-    console.log('onSignedIn', redirectUrl, user);
+  onSignedIn (firebaseUser) {
+    if (this.authService.isLoggedIn) {
+      return;
+    }
+
+    const user = new User(firebaseUser);
 
     this.authService.login(user);
-    this.router.navigate([redirectUrl]);
+
+    this.userService.init(user).then(() => {
+      this.router.navigate([this.authService.redirectUrl || '/']);
+    });
   }
 
   ngOnInit() {

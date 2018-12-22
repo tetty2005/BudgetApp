@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CategoryModel } from '../../CategoryModel';
+import { CategoryModel } from '../../Models/CategoryModel';
 
 @Component({
   selector: 'app-category-budget',

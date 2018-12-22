@@ -1,6 +1,4 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { tap, delay } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -11,7 +9,6 @@ export class AuthService {
   public redirectUrl: string;
 
   get isLoggedIn(): boolean {
-    console.log('isLoggedIn', this.user);
     return Boolean(this.user);
   }
 

@@ -16,4 +16,10 @@ export class CategoryModel {
     this.monthBudget = data.monthBudget;
     this.popularSumm = data.popularSumm;
   }
+
+  get() {
+    const {id, ...data} = <any>this;
+
+    return data;
+  }
 }
