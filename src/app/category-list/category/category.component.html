@@ -1,40 +1,44 @@
-<mat-card>
+<mat-card (click)="onSelect()" [class.selected]="isSelected" [class.selectable]="selectable">
   <mat-card-content>
 
     <div class="main-section row">
       <div class="title-section col-auto">
         <mat-icon class="title-icon">{{ category.icon }}</mat-icon>
         <span>{{ category.name }}</span>
-        <button mat-icon-button [matMenuTriggerFor]="menu">
-          <mat-icon>more_vert</mat-icon>
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item routerLink="/categories/{{ category.id }}">
-            <mat-icon class="icon-add">create</mat-icon>
-            Изменить
+        <ng-container *ngIf="!selectable">
+          <button mat-icon-button [matMenuTriggerFor]="menu">
+            <mat-icon>more_vert</mat-icon>
           </button>
-          <button mat-menu-item (click)="onDelete()">
-            <mat-icon class="icon-add">delete</mat-icon>
-            Удалить
-          </button>
-        </mat-menu>
+          <mat-menu #menu="matMenu">
+            <button mat-menu-item routerLink="/categories/{{ category.id }}">
+              <mat-icon class="icon-add">create</mat-icon>
+              Изменить
+            </button>
+            <button mat-menu-item (click)="onDelete()">
+              <mat-icon class="icon-add">delete</mat-icon>
+              Удалить
+            </button>
+          </mat-menu>
+        </ng-container>
       </div>
 
       <div class="spend-section col-auto right">
         <div class="row">
           <div class="col">
             <div class="spend-title">Бюджет на месяц</div>
-            <div class="spend-sum">{{ category.monthBudget }}</div>
+            <div *ngIf="!isSelected" class="spend-sum">{{ category.monthBudget }}</div>
+            <mat-form-field *ngIf="isSelected" (click)="$event.stopPropagation()">
+              <input type="number" step="100" matInput [(ngModel)]="category.monthBudget">
+            </mat-form-field>
           </div>
           <div class="col">
             <div class="spend-title">Стандартная трата</div>
-            <div class="spend-sum">{{ category.popularSumm }}</div>
+            <div class="spend-sum" *ngIf="!isSelected">{{ category.popularSumm }}</div>
+            <mat-form-field *ngIf="isSelected" (click)="$event.stopPropagation()">
+              <input type="number" step="100" matInput [(ngModel)]="category.popularSumm">
+            </mat-form-field>
           </div>
         </div>
-        <!--<mat-form-field>-->
-          <!--<input matInput placeholder="Сумма">-->
-        <!--</mat-form-field>-->
-        <!--<button mat-mini-fab>50</button>-->
       </div>
     </div>
 

@@ -40,3 +40,10 @@ app-root {
 .bg-red {
   background: #EA6777;
 }
+
+.page-title {
+  mat-card-title, mat-card-subtitle {
+    text-align: center;
+    color: white;
+  }
+}

@@ -10,13 +10,20 @@ import {UserCategoryService} from '../../services/user-category.service';
 })
 export class CategoryComponent implements OnInit {
   @Input() category: CategoryModel;
+  @Input() selectable: boolean = false;
   @Output() delete = new EventEmitter();
+
+  private isSelected: boolean = false;
 
   constructor (private service: UserCategoryService) {
   }
 
   onDelete () {
     this.service.delete(this.category).subscribe(() => this.delete.emit(this.category));
+  }
+
+  onSelect() {
+    this.isSelected = !this.isSelected;
   }
 
   ngOnInit() {

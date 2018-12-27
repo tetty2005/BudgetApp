@@ -1,6 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
@@ -10,8 +9,6 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
-import { DomSanitizer } from '@angular/platform-browser';
-import { MatIconRegistry } from '@angular/material';
 import { MatIconModule } from '@angular/material/icon';
 import { CategoryListComponent } from './category-list/category-list.component';
 import { DynamicMonthComponent } from './dynamic-month/dynamic-month.component';
@@ -25,15 +22,17 @@ import { BudgetComponent } from './budget/budget.component';
 import { CategoryBudgetComponent } from './budget/category-budget/category-budget.component';
 import { FirebaseComponent } from './firebase/firebase.component';
 import { AuthGuard } from './services/auth-guard.service';
+import { AddMonthCategoriesComponent } from './budget/add-month-categories/add-month-categories.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: '',  redirectTo: '/categories', pathMatch: 'full' },
   { path: 'categories', canActivate: [AuthGuard], component: CategoryListComponent },
+  { path: 'categories/:id', canActivate: [AuthGuard], component: EditCategoryComponent },
   { path: 'budget', canActivate: [AuthGuard], component: BudgetComponent },
+  { path: 'budget/add', canActivate: [AuthGuard], component: AddMonthCategoriesComponent },
   { path: 'statistics', canActivate: [AuthGuard], component: StaticCategoryComponent },
-  { path: 'dynamics', canActivate: [AuthGuard], component: DynamicMonthComponent },
-  { path: 'categories/:id', canActivate: [AuthGuard], component: EditCategoryComponent }
+  { path: 'dynamics', canActivate: [AuthGuard], component: DynamicMonthComponent }
 ];
 
 @NgModule({
@@ -47,10 +46,10 @@ const appRoutes: Routes = [
     DynamicMonthComponent,
     StaticCategoryComponent,
     CategoryBudgetComponent,
-    FirebaseComponent
+    FirebaseComponent,
+    AddMonthCategoriesComponent
   ],
   imports: [
-    HttpModule,
     FormsModule,
     HttpClientModule,
     RouterModule.forRoot(appRoutes),
