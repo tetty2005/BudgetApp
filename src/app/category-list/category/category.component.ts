@@ -13,7 +13,7 @@ export class CategoryComponent implements OnInit {
   @Input() selectable: boolean = false;
   @Output() delete = new EventEmitter();
 
-  private isSelected: boolean = false;
+  public isSelected: boolean = false;
 
   constructor (private service: UserCategoryService) {
   }
@@ -23,7 +23,9 @@ export class CategoryComponent implements OnInit {
   }
 
   onSelect() {
-    this.isSelected = !this.isSelected;
+    if (this.selectable) {
+      this.isSelected = !this.isSelected;
+    }
   }
 
   ngOnInit() {

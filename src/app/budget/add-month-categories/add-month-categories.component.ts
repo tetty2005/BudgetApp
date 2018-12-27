@@ -16,4 +16,8 @@ export class AddMonthCategoriesComponent implements OnInit {
     this.service.getAvailable().subscribe((data: CategoryModel[]) => this.categories = data);
   }
 
+  onSave() {
+    console.log('save caegories for month');
+  }
+
 }
