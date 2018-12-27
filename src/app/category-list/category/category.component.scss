@@ -43,6 +43,13 @@ mat-card {
   .mat-icon-button {
     color: grey;
   }
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
 }
 
 .mat-menu-item {
@@ -87,5 +94,29 @@ mat-card {
   .spend-sum {
     font-size: 22px;
     margin-top: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-section > span {
+      max-width: 87px;
+  }
+
+  .selectable {
+    .title-section > span {
+        max-width: 127px;
+    }
+  }
+}
+
+@media (min-width: 481px) {
+  .title-section > span {
+    max-width: 171px;
+  }
+
+  .selectable {
+    .title-section > span {
+      max-width: 211px;
+    }
   }
 }
