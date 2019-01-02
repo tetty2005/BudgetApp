@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryModel } from '../../../Models/CategoryModel';
+import { Category } from '../../../Models/Category';
 import { ActivatedRoute } from '@angular/router';
 import {UserCategoryService} from '../../../services/user-category.service';
 
@@ -10,7 +10,7 @@ import {UserCategoryService} from '../../../services/user-category.service';
 })
 export class EditCategoryComponent implements OnInit {
   private id;
-  public category: CategoryModel;
+  public category: Category;
 
   icons = ['restaurant', 'wc', 'group', 'domain', 'drive_eta', 'event_note', 'enhanced_encryption', 'beach_access',
   'business_center', 'casino', 'fitness_center', 'free_breakfast', 'kitchen', 'spa', 'train', 'local_bar', 'fastfood', 'local_mall',
@@ -21,10 +21,10 @@ export class EditCategoryComponent implements OnInit {
   ngOnInit() {
     this.id = this.route.snapshot.params.id;
     if (this.isNew()) {
-      this.category = new CategoryModel();
+      this.category = new Category();
       this.category.icon = 'restaurant';
     } else {
-      this.service.get(this.id).subscribe((data: CategoryModel) => {
+      this.service.get(this.id).subscribe((data: Category) => {
         this.category = data;
       });
     }

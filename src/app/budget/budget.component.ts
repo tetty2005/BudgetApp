@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryModel } from '../Models/CategoryModel';
+import { Category } from '../Models/Category';
 import { UserCategoryService } from '../services/user-category.service';
 
 @Component({
@@ -9,12 +9,12 @@ import { UserCategoryService } from '../services/user-category.service';
 })
 
 export class BudgetComponent implements OnInit {
-  categories: CategoryModel[];
+  categories: Category[];
 
   constructor(private service: UserCategoryService) { }
 
   ngOnInit() {
-    this.service.getAll().subscribe((data: CategoryModel[]) => this.categories = data);
+    this.service.getAll().subscribe((data: Category[]) => this.categories = data);
   }
 
   getCategories() {

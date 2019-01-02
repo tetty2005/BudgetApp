@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
-import {User} from '../Models/UserModel';
-import {CategoryModel} from '../Models/CategoryModel';
+import {User} from '../Models/User';
+import {Category} from '../Models/Category';
 import {FirebaseService} from './firebase.service';
 import {DefaultCategoryService} from './default-category.service';
 import {UserCategoryService} from './user-category.service';
@@ -24,7 +24,7 @@ export class UserService extends FirebaseService {
           resolve();
         } else {
           docRef.set({email: user.email, name: user.name});
-          this.defaultCategoryService.getAll().subscribe((categories: CategoryModel[]) => {
+          this.defaultCategoryService.getAll().subscribe((categories: Category[]) => {
             this.userCategoryService.createMany(categories).subscribe(() => resolve());
           });
         }

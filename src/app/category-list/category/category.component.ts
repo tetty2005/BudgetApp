@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CategoryModel } from '../../Models/CategoryModel';
+import { Category } from '../../Models/Category';
 import { EventEmitter, Output } from '@angular/core';
 import {UserCategoryService} from '../../services/user-category.service';
 
@@ -9,7 +9,7 @@ import {UserCategoryService} from '../../services/user-category.service';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-  @Input() category: CategoryModel;
+  @Input() category: Category;
   @Input() selectable: boolean = false;
   @Output() delete = new EventEmitter();
 

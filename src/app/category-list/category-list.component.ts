@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CategoryModel } from '../Models/CategoryModel';
+import { Category } from '../Models/Category';
 import {UserCategoryService} from '../services/user-category.service';
 
 @Component({
@@ -8,7 +8,7 @@ import {UserCategoryService} from '../services/user-category.service';
   styleUrls: ['./category-list.component.scss']
 })
 export class CategoryListComponent implements OnInit {
-  categories: CategoryModel[];
+  categories: Category[];
 
   constructor(private service: UserCategoryService) { }
 
@@ -17,10 +17,10 @@ export class CategoryListComponent implements OnInit {
   }
 
   getCategories() {
-    this.service.getAll().subscribe((data: CategoryModel[]) => this.categories = data);
+    this.service.getAll().subscribe((data: Category[]) => this.categories = data);
   }
 
-  onDelete(category: CategoryModel) {
+  onDelete(category: Category) {
     let indexCategory = this.categories.indexOf(category);
     this.categories.splice(indexCategory, 1);
   }

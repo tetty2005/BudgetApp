@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MonthCategoryService} from '../../services/month-category.service';
-import {CategoryModel} from '../../Models/CategoryModel';
+import {Category} from '../../Models/Category';
+import {CategoryMonth} from '../../Models/CategoryMonth';
 
 @Component({
   selector: 'app-add-month-categories',
@@ -8,16 +9,17 @@ import {CategoryModel} from '../../Models/CategoryModel';
   styleUrls: ['./add-month-categories.component.scss']
 })
 export class AddMonthCategoriesComponent implements OnInit {
-  categories: CategoryModel[];
+  categories: Category[];
+  categoriesMonth: CategoryMonth[];
 
   constructor(private service: MonthCategoryService) { }
 
   ngOnInit() {
-    this.service.getAvailable().subscribe((data: CategoryModel[]) => this.categories = data);
+    this.service.getAvailable().subscribe((data: Category[]) => this.categories = data);
   }
 
   onSave() {
-    console.log('save caegories for month');
-  }
 
+    console.log('save categories for month', this.categories);
+  }
 }

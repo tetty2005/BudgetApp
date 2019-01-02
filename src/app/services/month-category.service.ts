@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
 import {CategoryService} from './category.service';
 import {UserCategoryService} from './user-category.service';
-import {CategoryModel} from '../Models/CategoryModel';
+import {Category} from '../Models/Category';
 import {Observable} from 'rxjs';
 
 @Injectable({
@@ -25,11 +25,11 @@ export class MonthCategoryService extends CategoryService {
     return this.collectionUrl;
   }
 
-  getAvailable(): Observable<CategoryModel[]> {
+  getAvailable(): Observable<Category[]> {
     return Observable.create((observer) => {
-      const available: CategoryModel[] = [];
+      const available: Category[] = [];
 
-      this.userCategoryService.getAll().subscribe((userCategories: CategoryModel[]) => {
+      this.userCategoryService.getAll().subscribe((userCategories: Category[]) => {
         userCategories.forEach((category) => {
           available.push(category);
         });
