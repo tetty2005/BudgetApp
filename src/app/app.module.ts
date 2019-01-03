@@ -30,7 +30,7 @@ const appRoutes: Routes = [
   { path: 'categories', canActivate: [AuthGuard], component: CategoryListComponent },
   { path: 'categories/:id', canActivate: [AuthGuard], component: EditCategoryComponent },
   { path: 'budget', canActivate: [AuthGuard], component: BudgetComponent },
-  { path: 'budget/add', canActivate: [AuthGuard], component: AddMonthCategoriesComponent },
+  { path: 'budget/:monthId/add', canActivate: [AuthGuard], component: AddMonthCategoriesComponent },
   { path: 'statistics', canActivate: [AuthGuard], component: StaticCategoryComponent },
   { path: 'dynamics', canActivate: [AuthGuard], component: DynamicMonthComponent }
 ];

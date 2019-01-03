@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Category } from '../Models/Category';
 import { UserCategoryService } from '../services/user-category.service';
+import { Month } from '../Models/Month';
 
 @Component({
   selector: 'app-budget',
@@ -10,6 +11,7 @@ import { UserCategoryService } from '../services/user-category.service';
 
 export class BudgetComponent implements OnInit {
   categories: Category[];
+  month: Month = new Month();
 
   constructor(private service: UserCategoryService) { }
 
