@@ -23,14 +23,16 @@ import { CategoryBudgetComponent } from './budget/category-budget/category-budge
 import { FirebaseComponent } from './firebase/firebase.component';
 import { AuthGuard } from './services/auth-guard.service';
 import { AddMonthCategoriesComponent } from './budget/add-month-categories/add-month-categories.component';
+import { EditMonthCategoryComponent } from './budget/edit-month-category/edit-month-category.component';
 
 const appRoutes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '',  redirectTo: '/categories', pathMatch: 'full' },
+  { path: '',  redirectTo: '/budget', pathMatch: 'full' },
   { path: 'categories', canActivate: [AuthGuard], component: CategoryListComponent },
   { path: 'categories/:id', canActivate: [AuthGuard], component: EditCategoryComponent },
   { path: 'budget', canActivate: [AuthGuard], component: BudgetComponent },
   { path: 'budget/:monthId/add', canActivate: [AuthGuard], component: AddMonthCategoriesComponent },
+  { path: 'budget/edit-month-category/:id', canActivate: [AuthGuard], component: EditMonthCategoryComponent },
   { path: 'statistics', canActivate: [AuthGuard], component: StaticCategoryComponent },
   { path: 'dynamics', canActivate: [AuthGuard], component: DynamicMonthComponent }
 ];
@@ -47,7 +49,8 @@ const appRoutes: Routes = [
     StaticCategoryComponent,
     CategoryBudgetComponent,
     FirebaseComponent,
-    AddMonthCategoriesComponent
+    AddMonthCategoriesComponent,
+    EditMonthCategoryComponent
   ],
   imports: [
     FormsModule,

@@ -14,7 +14,7 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input type="number" matInput placeholder="Популярная сумма траты" [(ngModel)]="category.popularSumm">
+        <input type="number" matInput placeholder="Популярная сумма траты" [(ngModel)]="category.popularSum">
       </mat-form-field>
     </div>
     <div class="col title-picture">
@@ -30,7 +30,7 @@
     </div>
   </mat-card-content>
   <mat-card-actions>
-    <button mat-raised-button color="primary" routerLink="/" (click)="onSave()">Сохранить</button>
-    <button mat-raised-button routerLink="/">Отмена</button>
+    <button mat-raised-button color="primary" routerLink="/categories" (click)="onSave()">Сохранить</button>
+    <button mat-raised-button routerLink="/categories">Отмена</button>
   </mat-card-actions>
 </mat-card>

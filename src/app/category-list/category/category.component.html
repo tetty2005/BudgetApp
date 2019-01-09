@@ -33,9 +33,9 @@
           </div>
           <div class="col">
             <div class="spend-title">Стандартная трата</div>
-            <div class="spend-sum" *ngIf="!isSelected">{{ category.popularSumm }}</div>
+            <div class="spend-sum" *ngIf="!isSelected">{{ category.popularSum }}</div>
             <mat-form-field *ngIf="isSelected" (click)="$event.stopPropagation()">
-              <input type="number" step="100" matInput [(ngModel)]="category.popularSumm">
+              <input type="number" step="100" matInput [(ngModel)]="category.popularSum">
             </mat-form-field>
           </div>
         </div>

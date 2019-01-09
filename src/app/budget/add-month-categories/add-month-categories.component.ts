@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChildren, QueryList} from '@angular/core';
 import {MonthCategoryService} from '../../services/month-category.service';
 import {Category} from '../../Models/Category';
-import {CategoryMonth} from '../../Models/CategoryMonth';
+import {MonthCategory} from '../../Models/MonthCategory';
 import {ActivatedRoute} from '@angular/router';
 import {Month} from '../../Models/Month';
+import {CategoryComponent} from '../../category-list/category/category.component';
 
 @Component({
   selector: 'app-add-month-categories',
@@ -12,20 +13,26 @@ import {Month} from '../../Models/Month';
 })
 export class AddMonthCategoriesComponent implements OnInit {
   categories: Category[];
-  categoriesMonth: CategoryMonth[];
   month: Month;
+  @ViewChildren(CategoryComponent) categoryComps: QueryList<CategoryComponent>;
 
   constructor(private route: ActivatedRoute, private service: MonthCategoryService) { }
 
   ngOnInit() {
-    this.service.getAvailable().subscribe((data: Category[]) => this.categories = data);
     this.month = new Month(this.route.snapshot.params['monthId']);
+    this.service.setMonth(this.month);
+    this.service.getAvailable().subscribe((data: Category[]) => this.categories = data);
   }
 
-
-
   onSave() {
+    const monthCategories = this.getSelectedCategories().map(category => MonthCategory.fromCategory(category));
 
-    console.log('save categories for month', this.categories);
+    this.service.createMany(monthCategories);
+  }
+
+  getSelectedCategories() {
+    const categoryCompsSelected = this.categoryComps.filter(comp => comp.isSelected);
+
+    return categoryCompsSelected.map(comp => comp.category);
   }
 }

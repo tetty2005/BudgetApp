@@ -1,10 +1,14 @@
 import {Observable, of, from, forkJoin} from 'rxjs';
-import { Category } from '../Models/Category';
 import { FirebaseService } from './firebase.service';
+import {ICategory} from '../Models/ICategory';
 
-export class CategoryService extends FirebaseService {
+export class CategoryService<T extends ICategory> extends FirebaseService {
   protected collectionUrl;
   protected collectionRef;
+
+  constructor(private modelClass: new(data) => T) {
+    super();
+  }
 
   getCollectionUrl () {
     return this.collectionUrl;
@@ -18,21 +22,21 @@ export class CategoryService extends FirebaseService {
     return this.collectionRef;
   }
 
-  getAll(): Observable<Category[]> {
+  getAll(): Observable<T[]> {
     return Observable.create((observer) => {
-      const categories: Category[] = [];
+      const categories: T[] = [];
 
       this.getCollection().get().then((querySnapshot) => {
         querySnapshot.forEach((doc) => {
-          categories.push(new Category({id: doc.id, ...doc.data()}));
+          categories.push(new this.modelClass({id: doc.id, ...doc.data()}));
         });
         observer.next(categories);
       });
     });
   }
 
-  get(id: string): Observable<Category> {
-    const category = new Category();
+  get(id: string): Observable<T> {
+    const category = new this.modelClass(null);
 
     this.getCollection().doc(id).get().then((doc) => {
       category.set({id: doc.id, ...doc.data()});
@@ -41,29 +45,25 @@ export class CategoryService extends FirebaseService {
     return of(category);
   }
 
-  update(category: Category): Observable<Category> {
+  update(category: T): Observable<T> {
     const promise = this.getCollection().doc(category.id).set(category.get());
 
     return from(promise);
   }
 
-  create(category: Category): Observable<Category> {
-    const promise = this.getCollection().add({...category});
+  create(category: T): Observable<T> {
+    const promise = this.getCollection().add(category.get());
 
     return from(promise);
   }
 
-  createMany(categories: Category[]) {
-    const observables = [];
-
-    categories.forEach((category) => {
-      observables.push(this.create(category.get()));
-    });
+  createMany(categories: T[]) {
+    const observables = categories.map((category: T) => this.create(category));
 
     return forkJoin(observables);
   }
 
-  delete(category: Category): Observable<Category> {
+  delete(category: T): Observable<T> {
     const promise = this.getCollection().doc(category.id).delete();
 
     return from(promise);

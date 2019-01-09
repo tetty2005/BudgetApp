@@ -21,7 +21,8 @@ export class CategoryListComponent implements OnInit {
   }
 
   onDelete(category: Category) {
-    let indexCategory = this.categories.indexOf(category);
-    this.categories.splice(indexCategory, 1);
+    const index = this.categories.indexOf(category);
+
+    this.categories.splice(index, 1);
   }
 }

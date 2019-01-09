@@ -1,9 +1,11 @@
-export class Category {
-  public id: number;
+import {ICategory} from './ICategory';
+
+export class Category implements ICategory {
+  public id: string;
   public icon: string;
   public name: string;
   public monthBudget: number;
-  public popularSumm: number;
+  public popularSum: number;
 
   constructor(data = null) {
     if (data) this.set(data);
@@ -14,7 +16,7 @@ export class Category {
     this.icon = data.icon;
     this.name = data.name;
     this.monthBudget = data.monthBudget;
-    this.popularSumm = data.popularSumm;
+    this.popularSum = data.popularSum;
   }
 
   get() {

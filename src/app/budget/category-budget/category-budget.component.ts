@@ -1,5 +1,6 @@
-import { Component, OnInit, Input } from '@angular/core';
-import { Category } from '../../Models/Category';
+import {Component, OnInit, Input, Output, EventEmitter} from '@angular/core';
+import {MonthCategory} from '../../Models/MonthCategory';
+import {MonthCategoryService} from '../../services/month-category.service';
 
 @Component({
   selector: 'app-category-budget',
@@ -7,19 +8,28 @@ import { Category } from '../../Models/Category';
   styleUrls: ['./category-budget.component.scss']
 })
 export class CategoryBudgetComponent implements OnInit {
-  @Input() category: Category;
-  constructor() { }
+  @Input() monthCategory: MonthCategory;
+  @Output() delete = new EventEmitter();
+  enteredSum: number;
+  constructor(private service: MonthCategoryService) { }
 
-  onEdit () {
+  onEdit() {
     console.log('onEdit');
   }
 
-  onDelete () {
-    console.log('onDelete');
+  onDelete() {
+    this.service.delete(this.monthCategory).subscribe(() => this.delete.emit(this.monthCategory));
   }
 
-  onShortSum () {
-    console.log('onShortSum');
+  onShortSum() {
+    console.log('onShortSum: add', this.monthCategory.popularSum);
+  }
+
+  onSumEnter() {
+    if (this.enteredSum) {
+      console.log('onSumEnter: add', this.enteredSum);
+      this.enteredSum = null;
+    }
   }
 
   ngOnInit() {

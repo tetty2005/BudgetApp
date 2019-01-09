@@ -1,14 +1,15 @@
 import {Injectable} from '@angular/core';
 import {AuthService} from './auth.service';
 import {CategoryService} from './category.service';
+import {Category} from '../Models/Category';
 
 @Injectable({
   providedIn: 'root',
 })
-export class UserCategoryService extends CategoryService {
+export class UserCategoryService extends CategoryService<Category> {
 
   constructor(private authService: AuthService) {
-    super();
+    super(Category);
   }
 
   getCollectionUrl () {

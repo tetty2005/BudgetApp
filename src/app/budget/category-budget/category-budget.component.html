@@ -3,13 +3,13 @@
 
     <div class="main-section row">
       <div class="title-section col-auto">
-        <mat-icon class="title-icon">{{ category.icon }}</mat-icon>
-        <span>{{ category.name }}</span>
+        <mat-icon class="title-icon">{{ monthCategory.icon }}</mat-icon>
+        <span>{{ monthCategory.name }}</span>
         <button mat-icon-button [matMenuTriggerFor]="menu">
           <mat-icon>more_vert</mat-icon>
         </button>
         <mat-menu #menu="matMenu">
-          <button mat-menu-item (click)="onEdit()">
+          <button mat-menu-item routerLink="/budget/edit-month-category/{{ monthCategory.id }}">
             <mat-icon class="icon-add">create</mat-icon>
             Изменить
           </button>
@@ -21,20 +21,20 @@
       </div>
 
       <div class="action-section col right">
-        <mat-form-field>
-          <input matInput placeholder="Сумма">
+        <mat-form-field (keyup.enter)="onSumEnter()">
+          <input matInput type="number" placeholder="Сумма" [(ngModel)]="enteredSum">
         </mat-form-field>
-        <button mat-mini-fab (click)="onShortSum()">{{ category.popularSumm }}</button>
+        <button mat-mini-fab (click)="onShortSum()">{{ monthCategory.popularSum }}</button>
       </div>
     </div>
 
     <div class="progress-section row">
       <div class="col-auto">
-        <strong>$430</strong> of
-        <strong class="goal-total">${{ category.monthBudget }}</strong>
+        <strong>${{ monthCategory.spendingSum }}</strong> of
+        <strong class="goal-total">${{ monthCategory.monthBudget }}</strong>
       </div>
       <div class="col right">
-        <strong>$570</strong>
+        <strong>${{ monthCategory.monthBudget - monthCategory.spendingSum }}</strong>
       </div>
       <mat-progress-bar class="styled2" mode="determinate" value="40" color="#123456"></mat-progress-bar>
     </div>

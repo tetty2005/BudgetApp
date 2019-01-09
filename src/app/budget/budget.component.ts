@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../Models/Category';
-import { UserCategoryService } from '../services/user-category.service';
 import { Month } from '../Models/Month';
+import {MonthCategoryService} from '../services/month-category.service';
+import {MonthCategory} from '../Models/MonthCategory';
+import {Category} from '../Models/Category';
 
 @Component({
   selector: 'app-budget',
@@ -10,16 +11,19 @@ import { Month } from '../Models/Month';
 })
 
 export class BudgetComponent implements OnInit {
-  categories: Category[];
+  monthCategories: MonthCategory[];
   month: Month = new Month();
 
-  constructor(private service: UserCategoryService) { }
+  constructor(private service: MonthCategoryService) { }
 
   ngOnInit() {
-    this.service.getAll().subscribe((data: Category[]) => this.categories = data);
+    this.service.setMonth(this.month);
+    this.service.getAll().subscribe((data: MonthCategory[]) => this.monthCategories = data);
   }
 
-  getCategories() {
-    console.log('getCategories', this.categories);
+  onDelete(monthCategory: MonthCategory) {
+    const index = this.monthCategories.indexOf(monthCategory);
+
+    this.monthCategories.splice(index, 1);
   }
 }

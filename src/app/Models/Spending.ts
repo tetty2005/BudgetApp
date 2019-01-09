@@ -1,5 +1,5 @@
 export class Spending {
-  public summ: number;
+  public sum: number;
   public comment: string;
 
   constructor() {}
