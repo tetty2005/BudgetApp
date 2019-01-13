@@ -98,26 +98,90 @@ mat-card {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 374px) {
+  .mat-icon-button {
+    width: 30px;
+  }
+
+  .title-section {
+    span {
+      max-width: 62px;
+    }
+
+    .title-icon {
+      margin-right: 10px;
+    }
+  }
+
+  .selectable {
+    .title-section {
+      span {
+        max-width: 97px;
+      }
+
+      .title-icon {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@media (min-width: 375px) and (max-width: 413px) {
+  .title-section {
+    span {
+      max-width: 71px;
+    }
+
+    .title-icon {
+      margin-right: 15px;
+    }
+  }
+
+  .selectable {
+    .title-section {
+      span {
+        max-width: 107px;
+      }
+
+      .title-icon {
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+@media (min-width: 414px) and (max-width: 459px) {
   .title-section > span {
-      max-width: 81px;
+      max-width: 106px;
   }
 
   .selectable {
     .title-section > span {
-        max-width: 117px;
+        max-width: 141px;
+    }
+  }
+}
+
+@media (min-width: 460px) and (max-width: 480px) {
+  .title-section > span {
+    max-width: 152px;
+  }
+
+  .selectable {
+    .title-section > span {
+      max-width: 187px;
     }
   }
 }
 
 @media (min-width: 481px) {
   .title-section > span {
-    max-width: 171px;
+    max-width: 173px;
   }
 
   .selectable {
     .title-section > span {
-      max-width: 211px;
+      max-width: 208px;
     }
   }
 }

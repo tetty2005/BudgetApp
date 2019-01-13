@@ -129,14 +129,44 @@ mat-card {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 374px) {
+  .title-section {
+    span {
+      max-width: 72px;
+    }
+
+    .title-icon {
+      margin-right: 10px;
+    }
+  }
+}
+
+@media (min-width: 375px) and (max-width: 399px) {
+  .title-section{
+    span {
+      max-width: 82px;
+    }
+
+    .title-icon {
+      margin-right: 15px;
+    }
+  }
+}
+
+@media (min-width: 400px) and (max-width: 459px) {
   .title-section > span {
-    max-width: 91px;
+    max-width: 116px;
+  }
+}
+
+@media (min-width: 460px) and (max-width: 480px) {
+  .title-section > span {
+    max-width: 162px;
   }
 }
 
 @media (min-width: 481px) {
   .title-section > span {
-    max-width: 186px;
+    max-width: 183px;
   }
 }
