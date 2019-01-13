@@ -13,8 +13,15 @@ export class MonthCategory extends Category {
   set(data) {
     super.set(data);
     this.categoryId = data.categoryId;
-    this.spendings = data.spendings;
+    this.spendings = data.spendings.map((spending) => new Spending(spending));
     this.spendingSum = data.spendingSum;
+  }
+
+  get() {
+    const data = super.get();
+    data.spendings = data.spendings.map((spending) => ({...spending}));
+
+    return data;
   }
 
   static fromCategory(category: Category) {
@@ -24,5 +31,10 @@ export class MonthCategory extends Category {
       spendings: [],
       spendingSum: 0
     });
+  }
+
+  addSpending(spending: Spending) {
+    this.spendings.push(spending);
+    this.spendingSum += spending.sum;
   }
 }

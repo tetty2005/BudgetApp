@@ -76,23 +76,67 @@ mat-card {
 }
 
 ::ng-deep .mat-progress-bar-fill::after {
+  //.styled1 & {
+  //  background-color: #beb840;
+  //}
+  //
+  //.styled2 & {
+  //  background-color: #f2cb66;
+  //}
+  //
+  //.styled3 & {
+  //  background-color: #eda23d;
+  //}
+  //
+  //.styled4 & {
+  //  background-color: #db5e30;
+  //}
+  //
+  //.styled5 & {
+  //  background-color: #a82221;
+  //}
+
+  .styled0 & {
+    background-color: #00a388;
+  }
+
   .styled1 & {
-    background-color: #beb840;
+    background-color: #3eaf8b;
   }
 
   .styled2 & {
-    background-color: #f2cb66;
+    background-color: #79bd8f;
   }
 
   .styled3 & {
-    background-color: #eda23d;
+    background-color: #97d397;
   }
 
   .styled4 & {
-    background-color: #db5e30;
+    background-color: #beeb9f;
   }
 
   .styled5 & {
-    background-color: #a82221;
+    background-color: #d8f79f;
+  }
+
+  .styled6 & {
+    background-color: #ffff9d;
+  }
+
+  .styled7 & {
+    background-color: #ffe88f;
+  }
+
+  .styled8 & {
+    background-color: #ff9358;
+  }
+
+  .styled9 & {
+    background-color: #ff9358;
+  }
+
+  .styled10 & {
+    background-color: #ff6138;
   }
 }

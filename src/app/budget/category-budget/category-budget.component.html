@@ -24,7 +24,7 @@
         <mat-form-field (keyup.enter)="onSumEnter()">
           <input matInput type="number" placeholder="Сумма" [(ngModel)]="enteredSum">
         </mat-form-field>
-        <button mat-mini-fab (click)="onShortSum()">{{ monthCategory.popularSum }}</button>
+        <button mat-mini-fab (click)="onPopularSum()">{{ monthCategory.popularSum }}</button>
       </div>
     </div>
 
@@ -36,7 +36,7 @@
       <div class="col right">
         <strong>${{ monthCategory.monthBudget - monthCategory.spendingSum }}</strong>
       </div>
-      <mat-progress-bar class="styled2" mode="determinate" value="40" color="#123456"></mat-progress-bar>
+      <mat-progress-bar [ngClass]="progressClass" mode="determinate" value="{{ monthCategory.spendingSum / monthCategory.monthBudget * 100 }}" color="#123456"></mat-progress-bar>
     </div>
 
   </mat-card-content>

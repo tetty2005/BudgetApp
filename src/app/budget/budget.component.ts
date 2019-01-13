@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { Month } from '../Models/Month';
 import {MonthCategoryService} from '../services/month-category.service';
 import {MonthCategory} from '../Models/MonthCategory';
-import {Category} from '../Models/Category';
 
 @Component({
   selector: 'app-budget',
