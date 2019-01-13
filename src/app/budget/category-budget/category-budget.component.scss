@@ -28,6 +28,13 @@ mat-card {
     margin-top: -9px;
     width: 35px;
   }
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+  }
 }
 
 .mat-menu-item {
@@ -119,5 +126,17 @@ mat-card {
 
   .styled10 & {
     background-color: #ff6138;
+  }
+}
+
+@media (max-width: 480px) {
+  .title-section > span {
+    max-width: 92px;
+  }
+}
+
+@media (min-width: 481px) {
+  .title-section > span {
+    max-width: 186px;
   }
 }
