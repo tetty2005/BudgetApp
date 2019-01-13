@@ -26,6 +26,7 @@ mat-card {
   .mat-icon-button {
     color: grey;
     margin-top: -9px;
+    width: 35px;
   }
 }
 
@@ -76,26 +77,6 @@ mat-card {
 }
 
 ::ng-deep .mat-progress-bar-fill::after {
-  //.styled1 & {
-  //  background-color: #beb840;
-  //}
-  //
-  //.styled2 & {
-  //  background-color: #f2cb66;
-  //}
-  //
-  //.styled3 & {
-  //  background-color: #eda23d;
-  //}
-  //
-  //.styled4 & {
-  //  background-color: #db5e30;
-  //}
-  //
-  //.styled5 & {
-  //  background-color: #a82221;
-  //}
-
   .styled0 & {
     background-color: #00a388;
   }
