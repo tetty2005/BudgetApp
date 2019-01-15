@@ -4,6 +4,19 @@ mat-card {
   padding: 20px;
 }
 
+.selectable {
+  cursor: pointer;
+}
+
+.selected {
+  background-color: #FFB200;
+
+  .title-icon {
+    background-color: #fff !important;
+    color: #FFB200 !important;
+  }
+}
+
 .main-section {
   justify-content: space-between;
 }
@@ -29,6 +42,14 @@ mat-card {
 
   .mat-icon-button {
     color: grey;
+    width: 35px;
+  }
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
   }
 }
 
@@ -50,8 +71,16 @@ mat-card {
   width: 130px;
 
   .mat-form-field {
-    width: 60px;
-    margin-right: 20px;
+    width: 45px;
+    margin-right: 0px;
+    text-align: center;
+    margin-bottom: -15px;
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
   }
 
   .mat-mini-fab {
@@ -66,5 +95,93 @@ mat-card {
   .spend-sum {
     font-size: 22px;
     margin-top: 15px;
+  }
+}
+
+@media (max-width: 374px) {
+  .mat-icon-button {
+    width: 30px;
+  }
+
+  .title-section {
+    span {
+      max-width: 62px;
+    }
+
+    .title-icon {
+      margin-right: 10px;
+    }
+  }
+
+  .selectable {
+    .title-section {
+      span {
+        max-width: 97px;
+      }
+
+      .title-icon {
+        margin-right: 10px;
+      }
+    }
+  }
+}
+
+@media (min-width: 375px) and (max-width: 413px) {
+  .title-section {
+    span {
+      max-width: 71px;
+    }
+
+    .title-icon {
+      margin-right: 15px;
+    }
+  }
+
+  .selectable {
+    .title-section {
+      span {
+        max-width: 107px;
+      }
+
+      .title-icon {
+        margin-right: 15px;
+      }
+    }
+  }
+}
+
+@media (min-width: 414px) and (max-width: 459px) {
+  .title-section > span {
+      max-width: 106px;
+  }
+
+  .selectable {
+    .title-section > span {
+        max-width: 141px;
+    }
+  }
+}
+
+@media (min-width: 460px) and (max-width: 480px) {
+  .title-section > span {
+    max-width: 152px;
+  }
+
+  .selectable {
+    .title-section > span {
+      max-width: 187px;
+    }
+  }
+}
+
+@media (min-width: 481px) {
+  .title-section > span {
+    max-width: 173px;
+  }
+
+  .selectable {
+    .title-section > span {
+      max-width: 208px;
+    }
   }
 }

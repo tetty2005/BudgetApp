@@ -1,8 +1,9 @@
-<mat-card-content>
+<mat-card-content class="page-title">
   <mat-card-title>Категории</mat-card-title>
   <mat-card-subtitle>Список всех категорий</mat-card-subtitle>
-  <app-category *ngFor="let category of categories" [category]="category"></app-category>
-  <button mat-fab routerLink="/categories/new" class="add-category" title="Создать категорию">
-    <mat-icon>add</mat-icon>
-  </button>
 </mat-card-content>
+<app-category *ngFor="let category of categories" [category]="category" (delete)="onDelete($event)"></app-category>
+<button mat-fab routerLink="/categories/new" class="fixed-button" title="Создать категорию">
+  <mat-icon>add</mat-icon>
+</button>
+

@@ -1,0 +1,9 @@
+<mat-card-content class="page-title">
+  <mat-card-title>Бюджет за месяц</mat-card-title>
+  <mat-card-subtitle>{{month}}</mat-card-subtitle>
+  <mat-card-subtitle class="instruction">Выберите категории трат для текущего месяца:</mat-card-subtitle>
+</mat-card-content>
+<app-category *ngFor="let category of categories" [category]="category" [selectable]="true"></app-category>
+<button mat-raised-button color="primary" routerLink="/" (click)="onSave()">Сохранить</button>
+<button mat-raised-button routerLink="/budget">Отмена</button>
+

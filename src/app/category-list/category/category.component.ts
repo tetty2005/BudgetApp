@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { CategoryModel } from '../../CategoryModel';
-import { CategoryService } from '../../services/category.service';
+import { Category } from '../../Models/Category';
+import { EventEmitter, Output } from '@angular/core';
+import {UserCategoryService} from '../../services/user-category.service';
 
 @Component({
   selector: 'app-category',
@@ -8,18 +9,23 @@ import { CategoryService } from '../../services/category.service';
   styleUrls: ['./category.component.scss']
 })
 export class CategoryComponent implements OnInit {
-  @Input() category: CategoryModel;
+  @Input() category: Category;
+  @Input() selectable: boolean = false;
+  @Output() delete = new EventEmitter();
 
-  constructor (private service: CategoryService) {
-  }
+  public isSelected: boolean = false;
 
-  onEdit () {
-    console.log('onEdit');
+  constructor (private service: UserCategoryService) {
   }
 
   onDelete () {
-    console.log('onDelete');
-    this.service.onDelete(this.category);
+    this.service.delete(this.category).subscribe(() => this.delete.emit(this.category));
+  }
+
+  onSelect() {
+    if (this.selectable) {
+      this.isSelected = !this.isSelected;
+    }
   }
 
   ngOnInit() {

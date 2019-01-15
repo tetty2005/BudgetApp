@@ -40,3 +40,17 @@ app-root {
 .bg-red {
   background: #EA6777;
 }
+
+.page-title {
+  mat-card-title, mat-card-subtitle {
+    text-align: center;
+    color: white;
+  }
+}
+
+.fixed-button {
+  background-color: #F24B21 !important;
+  position: absolute !important;
+  right: 37px;
+  bottom: 61px;
+}

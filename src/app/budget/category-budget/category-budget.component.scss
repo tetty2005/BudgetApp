@@ -26,6 +26,14 @@ mat-card {
   .mat-icon-button {
     color: grey;
     margin-top: -9px;
+    width: 35px;
+  }
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
   }
 }
 
@@ -76,23 +84,89 @@ mat-card {
 }
 
 ::ng-deep .mat-progress-bar-fill::after {
+  .styled0 & {
+    background-color: #00a388;
+  }
+
   .styled1 & {
-    background-color: #beb840;
+    background-color: #3eaf8b;
   }
 
   .styled2 & {
-    background-color: #f2cb66;
+    background-color: #79bd8f;
   }
 
   .styled3 & {
-    background-color: #eda23d;
+    background-color: #97d397;
   }
 
   .styled4 & {
-    background-color: #db5e30;
+    background-color: #beeb9f;
   }
 
   .styled5 & {
-    background-color: #a82221;
+    background-color: #d8f79f;
+  }
+
+  .styled6 & {
+    background-color: #ffff9d;
+  }
+
+  .styled7 & {
+    background-color: #ffe88f;
+  }
+
+  .styled8 & {
+    background-color: #ff9358;
+  }
+
+  .styled9 & {
+    background-color: #ff9358;
+  }
+
+  .styled10 & {
+    background-color: #ff6138;
+  }
+}
+
+@media (max-width: 374px) {
+  .title-section {
+    span {
+      max-width: 72px;
+    }
+
+    .title-icon {
+      margin-right: 10px;
+    }
+  }
+}
+
+@media (min-width: 375px) and (max-width: 399px) {
+  .title-section{
+    span {
+      max-width: 82px;
+    }
+
+    .title-icon {
+      margin-right: 15px;
+    }
+  }
+}
+
+@media (min-width: 400px) and (max-width: 459px) {
+  .title-section > span {
+    max-width: 116px;
+  }
+}
+
+@media (min-width: 460px) and (max-width: 480px) {
+  .title-section > span {
+    max-width: 162px;
+  }
+}
+
+@media (min-width: 481px) {
+  .title-section > span {
+    max-width: 183px;
   }
 }

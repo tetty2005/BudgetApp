@@ -1,37 +1,71 @@
-import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
-import { CategoryModel } from '../CategoryModel';
-import { HttpClient } from '@angular/common/http';
-import { FirebaseHelper } from '../firebase-helper';
+import {Observable, of, from, forkJoin} from 'rxjs';
+import { FirebaseService } from './firebase.service';
+import {ICategory} from '../Models/ICategory';
 
-@Injectable({
-  providedIn: 'root',
-})
-export class CategoryService {
-  public url = 'http://5178c677.ngrok.io/api/categories';
-  private db = FirebaseHelper.getApp().firestore();
+export class CategoryService<T extends ICategory> extends FirebaseService {
+  protected collectionUrl;
+  protected collectionRef;
 
-  constructor(private http: HttpClient) {}
+  constructor(private modelClass: new(data) => T) {
+    super();
+  }
 
-  getAll(): Observable<CategoryModel[]> {
-    const categories: CategoryModel[] = [];
-    this.db.collection('Categories').get().then((querySnapshot) => {
-      querySnapshot.forEach((doc) => {
-        categories.push(doc.data());
-        console.log('querySnapshot', `${doc.id} => ${doc.data()}`);
+  getCollectionUrl () {
+    return this.collectionUrl;
+  }
+
+  getCollection () {
+    if (!this.collectionRef) {
+      this.collectionRef = this.getDb().collection(this.getCollectionUrl());
+    }
+
+    return this.collectionRef;
+  }
+
+  getAll(): Observable<T[]> {
+    return Observable.create((observer) => {
+      const categories: T[] = [];
+
+      this.getCollection().get().then((querySnapshot) => {
+        querySnapshot.forEach((doc) => {
+          categories.push(new this.modelClass({id: doc.id, ...doc.data()}));
+        });
+        observer.next(categories);
       });
-      console.log('getAll categories', categories);
+    });
+  }
+
+  get(id: string): Observable<T> {
+    const category = new this.modelClass(null);
+
+    this.getCollection().doc(id).get().then((doc) => {
+      category.set({id: doc.id, ...doc.data()});
     });
 
-    return of(categories);
+    return of(category);
   }
 
-  create(category: CategoryModel):Observable<CategoryModel> {
-    return this.db.collection('Categories').add(JSON.parse(JSON.stringify(category)));
+  update(category: T): Observable<T> {
+    const promise = this.getCollection().doc(category.id).set(category.get());
+
+    return from(promise);
   }
 
-  onDelete(category: CategoryModel):Observable<CategoryModel> {
-    let url = this.url + '/' + category.id;
-    return this.http.delete<CategoryModel>(url);
+  create(category: T): Observable<T> {
+    const promise = this.getCollection().add(category.get());
+
+    return from(promise);
+  }
+
+  createMany(categories: T[]) {
+    const observables = categories.map((category: T) => this.create(category));
+
+    return forkJoin(observables);
+  }
+
+  delete(category: T): Observable<T> {
+    const promise = this.getCollection().doc(category.id).delete();
+
+    return from(promise);
   }
 }

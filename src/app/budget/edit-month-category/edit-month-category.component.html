@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-title>Редактирование категории {{monthCategory.name}}</mat-card-title>
+  <mat-card-content class="row">
+    <div class="col">
+      <mat-form-field>
+        <input type="number" step="100" matInput placeholder="Бюджет на месяц" [(ngModel)]="monthCategory.monthBudget">
+      </mat-form-field>
+      <mat-form-field>
+        <input type="number" matInput placeholder="Популярная сумма траты" [(ngModel)]="monthCategory.popularSum">
+      </mat-form-field>
+    </div>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" routerLink="/budget" (click)="onSave()">Сохранить</button>
+    <button mat-raised-button routerLink="/budget">Отмена</button>
+  </mat-card-actions>
+</mat-card>

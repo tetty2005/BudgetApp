@@ -1,8 +1,9 @@
-<mat-card-content>
+<mat-card-content class="page-title">
   <mat-card-title>Бюджет за месяц</mat-card-title>
-  <mat-card-subtitle>Июль 2018</mat-card-subtitle>
-  <app-category-budget *ngFor="let category of categories" [category]="category"></app-category-budget>
-  <button mat-fab class="add-category" title="Добавить из списка" (click)="getCategories()">
-    <mat-icon>playlist_add</mat-icon>
-  </button>
+  <mat-card-subtitle>{{ month }}</mat-card-subtitle>
 </mat-card-content>
+<app-category-budget *ngFor="let monthCategory of monthCategories" [monthCategory]="monthCategory" (delete)="onDelete($event)"></app-category-budget>
+
+<button mat-fab [routerLink]="[month.id, 'add']" class="fixed-button" title="Добавить из списка">
+  <mat-icon>playlist_add</mat-icon>
+</button>
