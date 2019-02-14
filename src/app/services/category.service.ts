@@ -2,6 +2,10 @@ import {Observable, of, from, forkJoin} from 'rxjs';
 import { FirebaseService } from './firebase.service';
 import {ICategory} from '../Models/ICategory';
 
+
+
+/// check git force
+
 export class CategoryService<T extends ICategory> extends FirebaseService {
   protected collectionUrl;
   protected collectionRef;
